@@ -25,11 +25,9 @@ namespace nothinbutdotnetstore.specs
                 the_catalog = the_dependency<StoreCatalog>();
                 the_request = an<Request>();
 
-                provide_a_basic_sut_constructor_argument<ViewRepositoryQuery<IEnumerable<SomeType>>>((x, y) =>
+                provide_a_basic_sut_constructor_argument<ViewRepositoryQueryFactory<IEnumerable<SomeType>>>(() =>
                 {
-                    x.ShouldEqual(the_catalog);
-                    y.ShouldEqual(the_request);
-                    return all_numbers;
+                    return (request)=> all_numbers  ;
                 });
             };
 

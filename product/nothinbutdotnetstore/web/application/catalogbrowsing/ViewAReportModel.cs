@@ -10,25 +10,24 @@ namespace nothinbutdotnetstore.web.application.catalogbrowsing
     {
         RenderingGateway rendering_gateway;
         StoreCatalog general_catalog;
-        ViewRepositoryQuery<ReportModel> query;
+        readonly ViewRepositoryQueryFactory<ReportModel> query_factory;
 
-        public ViewAReportModel(ViewRepositoryQuery<ReportModel> query) : this(new WebFormRenderer(),
-                                                        Stub.with<StubStoreCatalog>(), query)
+        public ViewAReportModel(ViewRepositoryQueryFactory<ReportModel> query_factory) : this(new WebFormRenderer(),
+                                                        Stub.with<StubStoreCatalog>(), query_factory )
         {
-            this.query = query;
         }
 
         public ViewAReportModel(RenderingGateway rendering_gateway,
-                                               StoreCatalog catalog, ViewRepositoryQuery<ReportModel> query)
+                                               StoreCatalog catalog, ViewRepositoryQueryFactory<ReportModel> query_factory)
         {
             this.rendering_gateway = rendering_gateway;
-            this.query = query;
             this.general_catalog = catalog;
+            this.query_factory = query_factory;
         }
 
         public void process(Request request)
         {
-            rendering_gateway.render(query(general_catalog, request));
+            rendering_gateway.render(query_factory()(request));
         }
     }
 }

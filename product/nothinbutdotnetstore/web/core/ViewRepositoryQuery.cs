@@ -2,5 +2,7 @@
 
 namespace nothinbutdotnetstore.web.core
 {
-    public delegate ReportModel ViewRepositoryQuery<ReportModel>(StoreCatalog catalog,Request request);
+    public delegate ReportModel ViewRepositoryQuery<ReportModel>(Request request);
+
+    public delegate ViewRepositoryQuery<ReportModel> ViewRepositoryQueryFactory<ReportModel>();
 }
