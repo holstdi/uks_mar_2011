@@ -21,8 +21,8 @@ namespace nothinbutdotnetstore.web.core.stubs
                                                        return
                                                            (request) =>
                                                                new StubStoreCatalog().get_the_main_departments();
-                                                   });
-                                                       //(y) => .get_the_main_departments()));
+                                                   }));
+            //(y) => .get_the_main_departments()));
             //yield return new DefaultRequestCommand(x => true,
             //                                       new ViewAReportModel<IEnumerable<Product>>((x,y) => x.get_the_products_in(y.map<Department>())));
             //yield return new DefaultRequestCommand(x => true,
